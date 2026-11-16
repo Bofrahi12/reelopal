@@ -21,7 +21,7 @@
 - /where-to-watch/ — Where to watch legally (USA / UK / EU) · /where-to-watch/usa/ · /where-to-watch/uk/ · /where-to-watch/eu/
 - /new-this-week/ — New this week: 63 titles (59 from 2026 + 4 from 2025)
 - /guides/ — Guides, FAQ, robots.txt, sitemap.xml, llms.txt
-- /titles/<slug>/ — One page per title (25 titles at launch: the Netflix Top 10, the 10 chart-leading US movies and the 5 highest-rated series)
+- /titles/<slug>/ — One page per title (all 176 titles — every catalog title has its own page, all in the sitemap)
 
 ## Facts
 - #1 in the Netflix popularity snapshot (16 Nov 2026): Black Mirror (TVMaze weight 100, rating 8.4)
@@ -29,12 +29,12 @@
 - Ranking method: TVMaze popularity weight, ties broken by audience rating, then alphabetically. NOT Netflix's official daily chart.
 - Highest-rated title in catalog: Breaking Bad (9.2); Game of Thrones follows at 8.9, Person of Interest at 8.8.
 - Best movie of 2026 in catalog: Heart of the Beast (#1 US Apple TV chart); highest 2026 title on UK chart: Pressure (#3)
-- Data sources: TVMaze API (series), Apple iTunes charts US & UK (movies), official YouTube trailers
+- Data sources: TVMaze API (series), Apple iTunes charts US & UK (movies)
 - Markets: United States and Europe (UK chart). English only — no DE/FR/ES pages exist yet.
 - What ReelOpal is: a legal discovery guide. What it is NOT: a streaming site — no streams, no downloads, no pirated content.
 
 ## Note
-- All pages listed above are real paths with their own server-rendered content (no hash routes). The sitemap lists the same 49 URLs.
+- All pages listed above are real paths with their own server-rendered content (no hash routes). The sitemap lists the same 200 URLs.
 - The static build serves the frozen 16 Nov 2026 snapshot; the live TVMaze refresh is disabled, so counts stay at 176 titles until the next rebuild.
 
 - Dashboard: https://reelopal.onrender.com/dashboard/ — visitor stats (per-browser, privacy-friendly). Not indexed.
