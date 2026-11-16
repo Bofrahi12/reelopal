@@ -662,6 +662,16 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Dashboard</nav>
     <h2 class="page-t">Visitor Dashboard</h2>
     <p class="page-sub">Your daily visitor numbers for ReelOpal — page views, unique visitors per day, top titles, top pages, where visits came from, and smartlink clicks.</p>
+    <div class="dash-panel" id="dashGate" style="max-width:520px;margin:28px auto;text-align:center;padding:28px 22px">
+      <h3 style="margin-top:0">🔒 Private dashboard</h3>
+      <p style="color:var(--muted)">This dashboard is for the site owner only. Enter the password to view it.</p>
+      <form id="dashGateForm" autocomplete="off">
+        <input type="password" id="dashPass" placeholder="Password" aria-label="Dashboard password" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--gold);background:rgba(255,255,255,.07);color:#fff;font-size:16px" />
+        <button class="btn gold" type="submit" style="width:100%;margin-top:12px">Unlock dashboard</button>
+      </form>
+      <p id="dashGateErr" hidden style="color:#ff6b5e;font-weight:700;margin:12px 0 0">Wrong password — try again.</p>
+    </div>
+    <div id="dashContent" hidden>
     <div class="answer-first"><p><strong>Privacy-friendly — no cookies:</strong> this dashboard needs <strong>no cookie banner</strong>, because it sets no cookies and sends nothing anywhere. It only reads what ReelOpal's own analytics hook (<strong>window.ReelOpalAnalytics</strong>) has recorded in <strong>this browser's localStorage</strong>, on this device. Every number below is therefore <strong>this browser only — a per-device estimate, not site-wide traffic</strong>. Real site-wide traffic (all visitors, not just this browser) only appears once GA4 or Plausible is connected — see the status panel below and the setup steps in <a href="/guides/">Guides &amp; FAQ</a>.</p></div>
     <div class="empty" id="dashEmpty" hidden>No visits recorded yet on this browser.</div>
     <h3 style="margin:24px 0 2px">Daily summary — <span id="dashDate">today</span></h3>
@@ -684,6 +694,7 @@
     <div class="dash-panel"><h3>Unique visitors per day — this browser</h3><div id="dashDays"></div></div>
     <div class="dash-panel"><h3>Site-wide analytics — GA4 &amp; Plausible status</h3><div id="dashExt"></div></div>
     <nav class="rel-links" aria-label="Related guides"><a href="/">← Home</a><a href="/guides/">Guides &amp; FAQ — analytics setup</a><a href="/netflix/">Netflix Top 10</a><a href="/catalog/">All 176 Titles</a><a href="/watchlist/">My Watchlist</a></nav>
+    </div>
   </main>
 </div>
 

@@ -589,7 +589,7 @@ function route(){
   else if (view === 'new') { renderNew(); window.scrollTo(0, 0); }
   else if (view === 'usa') { renderGeo('usa'); window.scrollTo(0, 0); }
   else if (view === 'uk') { renderGeo('uk'); window.scrollTo(0, 0); }
-  else if (view === 'dashboard') { renderDashboard(); window.scrollTo(0, 0); applySeo('dashboard'); }
+  else if (view === 'dashboard') { applyDashGate(); window.scrollTo(0, 0); applySeo('dashboard'); }
   else if (view === 'what-to-watch-tonight') { fillGrid('tonightGrid', ['api-305-black-mirror','api-321-arrested-development','api-175-house-of-cards'].map(s => bySlug[s]).filter(Boolean), true); window.scrollTo(0, 0); applySeo('what-to-watch-tonight'); }
   else if (view === 'best-thriller-series-netflix-2026') { fillGrid('nfThrGrid', ['api-305-black-mirror','api-395-longmire','api-175-house-of-cards'].map(s => bySlug[s]).filter(Boolean)); fillGrid('moreThrGrid', ['api-169-breaking-bad','api-5-true-detective','api-81-criminal-minds','api-69-the-blacklist','api-30-american-horror-story','api-1-under-the-dome','verity','primetime','the-end-of-oak-street'].map(s => bySlug[s]).filter(Boolean)); window.scrollTo(0, 0); applySeo('best-thriller-series-netflix-2026'); }
   else if (view === 'where-to-watch-top10-usa') { fillGrid('w2wGrid', NF, true); window.scrollTo(0, 0); applySeo('where-to-watch-top10-usa', NF.map(t => t.title)); }
@@ -702,7 +702,22 @@ function dashTotals(){
   const topTitleAll = dashTopList(s.titles, 1)[0] || null;
   return {s:s, todayKey:todayKey, day:day, totalViews:totalViews, uniqueDays:uniqueDays, topTitleToday:topTitleToday, topRefToday:topRefToday, topTitleAll:topTitleAll};
 }
+/* ================= DASHBOARD PASSWORD GATE =================
+   /dashboard/ is owner-only. The password prompt shows first; the numbers
+   are only rendered after the correct password, and the unlock lasts for
+   the current tab session (sessionStorage). */
+const DASH_PASSWORD = 'monir2026';
+const DASH_UNLOCK_KEY = 'reelopalDashUnlock';
+function dashUnlocked(){ try { return sessionStorage.getItem(DASH_UNLOCK_KEY) === '1'; } catch (e) { return false; } }
+function applyDashGate(){
+  const gate = document.getElementById('dashGate');
+  const content = document.getElementById('dashContent');
+  if (!gate || !content) return;
+  if (dashUnlocked()) { gate.hidden = true; content.hidden = false; renderDashboard(); }
+  else { gate.hidden = false; content.hidden = true; const err = document.getElementById('dashGateErr'); if (err) err.hidden = true; const inp = document.getElementById('dashPass'); if (inp) inp.value = ''; }
+}
 function renderDashboard(){
+  if (!dashUnlocked()) return;
   const T = dashTotals(); const s = T.s; const day = T.day;
   const dateEl = document.getElementById('dashDate'); if (dateEl) dateEl.textContent = T.todayKey;
   const emptyEl = document.getElementById('dashEmpty'); if (emptyEl) emptyEl.hidden = T.totalViews > 0;
@@ -778,6 +793,13 @@ if (dashExportBtn) dashExportBtn.addEventListener('click', () => {
 });
 const dashRefreshBtn = document.getElementById('dashRefresh');
 if (dashRefreshBtn) dashRefreshBtn.addEventListener('click', () => { renderDashboard(); toast('Dashboard refreshed'); });
+const dashGateForm = document.getElementById('dashGateForm');
+if (dashGateForm) dashGateForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const inp = document.getElementById('dashPass');
+  if (inp && inp.value === DASH_PASSWORD) { try { sessionStorage.setItem(DASH_UNLOCK_KEY, '1'); } catch (err) {} applyDashGate(); }
+  else { const err = document.getElementById('dashGateErr'); if (err) err.hidden = false; if (inp) { inp.value = ''; inp.focus(); } }
+});
 
 /* ================= INIT ================= */
 syncSmartStatus();
