@@ -1,0 +1,40 @@
+# ReelOpal — Movies & TV Series Guide
+
+> ReelOpal is a legal movie and TV series discovery guide for the US and Europe.
+> 176 real titles (126 movies from the Apple iTunes charts + 50 series from the TVMaze API catalog). It publishes a
+> Netflix Top 10 popularity snapshot, the official US and UK Apple TV movie charts,
+> best-of-2026 and best-by-genre lists, and where-to-watch-legally guidance.
+> ReelOpal hosts no streams and no downloads; every title links to its official provider.
+> Canonical: https://reelopal.onrender.com
+> Updated: 16 Nov 2026 (catalog snapshot — movies and series, same date).
+
+## Key pages
+- / — Home: featured titles, Netflix Top 10, US & UK charts, mood picker, fresh guides hub
+- /netflix/ — Netflix Top 10 series, week of 16-22 Nov 2026 (TVMaze-popularity snapshot, 16 Nov 2026 — NOT Netflix's official chart)
+- /best-2026/ — Best movies of 2026: 59 real chart titles (43 US + 16 EU)
+- /what-to-watch-tonight/ — What to watch on Netflix tonight (3 picks for 16 Nov 2026 + 30-second chooser)
+- /best-thriller-series-netflix-2026/ — Best thriller series on Netflix 2026 (3 Netflix thrillers + more top-rated thrillers)
+- /where-to-watch-top10-usa/ — Where to watch the Netflix Top 10 legally in the USA
+- /usa/ — Best for US viewers · /uk/ — Best for UK viewers
+- /movies/ — US & UK movie charts · /series/ — Top-rated series · /catalog/ — All 176 titles
+- /genres/ — Browse by genre · /genre/thriller/ · /genre/comedy/ · /genre/drama/ · /genre/action/ · /genre/sci-fi/ · /genre/horror/ — Best-of lists by genre
+- /where-to-watch/ — Where to watch legally (USA / UK / EU) · /where-to-watch/usa/ · /where-to-watch/uk/ · /where-to-watch/eu/
+- /new-this-week/ — New this week: 63 titles (59 from 2026 + 4 from 2025)
+- /guides/ — Guides, FAQ, robots.txt, sitemap.xml, llms.txt
+- /titles/<slug>/ — One page per title (25 titles at launch: the Netflix Top 10, the 10 chart-leading US movies and the 5 highest-rated series)
+
+## Facts
+- #1 in the Netflix popularity snapshot (16 Nov 2026): Black Mirror (TVMaze weight 100, rating 8.4)
+- #2: Arrested Development (99, 8.2) · #3: House of Cards (99, 8.2) · #4: Longmire (98, 8.3) · #5: Orange Is the New Black (98, 7.9) · #6: WWE Monday Night RAW (98, 7.4) · #7: Power Rangers (98, 6.5) · #8: BoJack Horseman (96, 7.9) · #9: Marco Polo (95, 8.0) · #10: Lovesick (95, 7.3)
+- Ranking method: TVMaze popularity weight, ties broken by audience rating, then alphabetically. NOT Netflix's official daily chart.
+- Highest-rated title in catalog: Breaking Bad (9.2); Game of Thrones follows at 8.9, Person of Interest at 8.8.
+- Best movie of 2026 in catalog: Heart of the Beast (#1 US Apple TV chart); highest 2026 title on UK chart: Pressure (#3)
+- Data sources: TVMaze API (series), Apple iTunes charts US & UK (movies), official YouTube trailers
+- Markets: United States and Europe (UK chart). English only — no DE/FR/ES pages exist yet.
+- What ReelOpal is: a legal discovery guide. What it is NOT: a streaming site — no streams, no downloads, no pirated content.
+
+## Note
+- All pages listed above are real paths with their own server-rendered content (no hash routes). The sitemap lists the same 49 URLs.
+- The static build serves the frozen 16 Nov 2026 snapshot; the live TVMaze refresh is disabled, so counts stay at 176 titles until the next rebuild.
+
+- Dashboard: https://reelopal.onrender.com/dashboard/ — visitor stats (per-browser, privacy-friendly). Not indexed.
